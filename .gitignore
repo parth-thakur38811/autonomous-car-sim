@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Webots' own per-user files
+worlds/.*.wbproj
+worlds/.*.jpg
+
+# The empty world the wizard made (not used)
+worlds/autonomous_driving_sim.wbt
+
+# Raw test logs and videos
+runs/
+*.mp4
+*.avi
