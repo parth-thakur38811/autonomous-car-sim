@@ -2,7 +2,6 @@
 #Imports:
 from vehicle import Driver
 from controller import Keyboard
-import vision
 import cv2
 
 #SETTINGS:
@@ -32,7 +31,6 @@ camera.enable(time_step)
 speed = 0
 steering = 0
 print_time = 1.0
-last_x = vision.TARGET_LINE_X
 print(f"keyboard_drive started, time step: {time_step}ms")
 
 while driver.step() != -1:
@@ -56,10 +54,6 @@ while driver.step() != -1:
     steering = clamp(steering, -MAX_STEERING, MAX_STEERING)
     driver.setCruisingSpeed(speed)
     driver.setSteeringAngle(steering)
-    image = vision.camera_to_array(camera)
-    mask = vision.yellow_mask(image)
-    line_x = vision.line_position(mask, last_x)
-    crossing = vision.is_crossing(mask)
     if driver.getTime() >= print_time:
         coordinates = gps.getValues()
         x = coordinates[0]
@@ -68,15 +62,4 @@ while driver.step() != -1:
         print(f"t={driver.getTime()}; x={x:.1f}, y={y:.1f}, z={z:.1f}; target vel = {speed}, current vel={driver.getCurrentSpeed()}")
         filename = f"../../runs/frames/frame_{driver.getTime()}.png"
         camera.saveImage(filename, 100)
-        try:
-            print(f"line_x={line_x:.2f}, crossing={crossing}")
-        except(TypeError):
-            print("line_x= none")
-        cv2.imwrite(f"../../runs/frames/mask_{int(driver.getTime())}.png", mask)
         print_time += 1.0
-    if crossing:
-        pass
-    elif line_x is None:
-        last_x = vision.TARGET_LINE_X
-    else:
-        last_x = line_x

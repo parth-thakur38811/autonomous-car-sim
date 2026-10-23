@@ -34,7 +34,7 @@ speed = 0
 steering = 0
 print_time = 1.0
 last_x = vision.TARGET_LINE_X
-print(f"keyboard_drive started, time step: {time_step}ms")
+print(f"safe_drive started, time step: {time_step}ms")
 
 while driver.step() != -1:
     steered = False
