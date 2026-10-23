@@ -1,5 +1,3 @@
-
-
 **Created a self-driving car simulation in Webots R2025a, using Python.** 
 
 **What the car does:**
@@ -19,3 +17,5 @@
 5. GPS **and compass** for navigating through **junctions,** where yellow markings are absent.
 
 The project still needs major updates! The vehicle still cannot detect and react to traffic signals **or other cars**. Still working on it, but thought this was worth sharing!
+<img width="1584" height="508" alt="image-1792762781364" src="https://github.com/user-attachments/assets/edbac512-f48e-4b77-971f-0c2604f91283" />
+<img width="1584" height="508" alt="image-1792762789537" src="https://github.com/user-attachments/assets/184ff5bc-119f-4c6f-a90d-e62c6de87585" />
