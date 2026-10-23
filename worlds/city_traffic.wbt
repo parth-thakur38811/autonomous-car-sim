@@ -124,8 +124,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.11846451294605832 0.0035465609514645376 0.9929519530560735 3.0791566202255627
-  position 126.44583418156337 66.86150691830476 20.458726980008926
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position 1.2031269726989906e-14 4.010423242329969e-15 144.49072495804177
   near 1
   follow "vehicle"
   lensFlare LensFlare {
@@ -141,7 +141,7 @@ Fog {
 }
 SumoInterface {
   gui FALSE
-  maxVehicles 0
+  maxVehicles 20
 }
 DEF GROUND Solid {
   boundingObject DEF GROUND_PLANE Plane {
