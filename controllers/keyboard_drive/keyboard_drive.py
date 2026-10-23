@@ -51,3 +51,10 @@ while driver.step() != -1:
     steering = clamp(steering, -MAX_STEERING, MAX_STEERING)
     driver.setCruisingSpeed(speed)
     driver.setSteeringAngle(steering)
+    if driver.getTime() >= print_time:
+        coordinates = gps.getValues()
+        x = coordinates[0]
+        y = coordinates[1]
+        z = coordinates[2]
+        print(f"t={driver.getTime()}; x={x:.1f}, y={y:.1f}, z={z:.1f}; target vel = {speed}, current vel={driver.getCurrentSpeed()}")
+        print_time += 1.0
