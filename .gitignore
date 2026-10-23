@@ -13,3 +13,6 @@ worlds/autonomous_driving_sim.wbt
 runs/
 *.mp4
 *.avi
+
+# Personal study notes (not part of the project)
+notes/
