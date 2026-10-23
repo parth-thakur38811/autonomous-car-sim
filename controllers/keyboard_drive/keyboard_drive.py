@@ -3,6 +3,7 @@
 from vehicle import Driver
 from controller import Keyboard
 import vision
+import cv2
 
 #SETTINGS:
 MAX_SPEED = 30 #(kmph)
@@ -63,5 +64,9 @@ while driver.step() != -1:
         filename = f"../../runs/frames/frame_{driver.getTime()}.png"
         camera.saveImage(filename, 100)
         image = vision.camera_to_array(camera)
-        print(image.shape, image[100, 70], image[100, 200])
+        mask = vision.yellow_mask(image)
+        line_x = vision.line_position(mask)
+        crossing = vision.is_crossing(mask)
+        print(f"line_x={line_x}, crossing={crossing}")
+        cv2.imwrite(f"../../runs/frames/mask_{int(driver.getTime())}.png", mask)
         print_time += 1.0
