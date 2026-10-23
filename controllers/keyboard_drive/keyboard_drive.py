@@ -2,6 +2,7 @@
 #Imports:
 from vehicle import Driver
 from controller import Keyboard
+import vision
 
 #SETTINGS:
 MAX_SPEED = 30 #(kmph)
@@ -25,6 +26,8 @@ keyboard = driver.getKeyboard()
 keyboard.enable(time_step)
 gps = driver.getDevice("gps")
 gps.enable(time_step)
+camera = driver.getDevice("camera")
+camera.enable(time_step)
 speed = 0
 steering = 0
 print_time = 1.0
@@ -57,4 +60,8 @@ while driver.step() != -1:
         y = coordinates[1]
         z = coordinates[2]
         print(f"t={driver.getTime()}; x={x:.1f}, y={y:.1f}, z={z:.1f}; target vel = {speed}, current vel={driver.getCurrentSpeed()}")
+        filename = f"../../runs/frames/frame_{driver.getTime()}.png"
+        camera.saveImage(filename, 100)
+        image = vision.camera_to_array(camera)
+        print(image.shape, image[100, 70], image[100, 200])
         print_time += 1.0
