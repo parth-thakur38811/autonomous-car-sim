@@ -8,6 +8,9 @@ YELLOW_HIGH = (35, 255, 255)
 BAND_TOP = 80
 BAND_BOTTOM = 110
 CROSSING_COVERAGE = 0.5
+TARGET_LINE_X = 0.30
+SEARCH_WINDOW = 0.12
+MIN_LINE_PIXELS = 50
 
 
 def camera_to_array(camera):
@@ -29,10 +32,13 @@ def is_crossing(mask):
     else:
         return False
 
-def line_position(mask):
+def line_position(mask, last_x):
     band = mask[BAND_TOP:BAND_BOTTOM]
     rows, columns = np.nonzero(band)
-    if len(columns) == 0:
+    positions = columns / mask.shape[1]
+    if last_x is not None:
+        near = np.abs(positions - last_x) <= SEARCH_WINDOW
+        positions = positions[near]
+    if len(positions) < MIN_LINE_PIXELS:
         return None
-    else:
-        return columns.mean()/mask.shape[1]
+    return positions.mean()
