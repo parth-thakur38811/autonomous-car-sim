@@ -124,8 +124,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.19884042049686187 0.1891995425947396 0.96159555960839 1.657752561043425
-  position -47.12421008954344 -9.254277030216358 23.911145154206356
+  orientation -0.11846451294605832 0.0035465609514645376 0.9929519530560735 3.0791566202255627
+  position 126.44583418156337 66.86150691830476 20.458726980008926
   near 1
   follow "vehicle"
   lensFlare LensFlare {
@@ -813,7 +813,7 @@ StraightRoadSegment {
 DEF WEBOTS_VEHICLE0 BmwX5 {
   translation -5 47.7 0.4
   rotation 0 0 1 3.14159
-  controller "<none>"
+  controller "keyboard_drive"
   supervisor TRUE
   sensorsSlotFront [
     SickLms291 {
